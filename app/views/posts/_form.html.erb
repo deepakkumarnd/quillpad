@@ -16,26 +16,26 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :title, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :title, :class => 'form-control' %>
-    </div>
+    <%= f.label :title %>
+    <%= f.text_field :title, :class => 'form-control' %>
     <%=f.error_span(:title) %>
   </div>
   <div class="form-group">
-    <%= f.label :content, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_area :content, :class => 'form-control' %>
-    </div>
+    <%= f.label :content %>
+    <%= f.text_area :content, :class => 'form-control', id: 'editor', rows: 30 %>
     <%=f.error_span(:content) %>
   </div>
 
   <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                posts_path, :class => 'btn btn-default' %>
-    </div>
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+              posts_path, :class => 'btn btn-default' %>
   </div>
 
 <% end %>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script>
+  var simplemde = new SimpleMDE({ element: document.getElementById('editor') });
+</script>
