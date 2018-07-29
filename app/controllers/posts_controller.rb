@@ -65,6 +65,30 @@ class PostsController < ApplicationController
   def about
   end
 
+  def publish
+    respond_to do |format|
+      if @post.update(is_published: true)
+        format.html { redirect_to @post, notice: 'Post published.' }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        format.html { render :show }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def unpublish
+    respond_to do |format|
+      if @post.update(is_published: false)
+        format.html { redirect_to @post, notice: 'Post published.' }
+        format.json { render :show, status: :ok, location: @post }
+      else
+        format.html { render :show }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
