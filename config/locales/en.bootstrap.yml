@@ -16,6 +16,8 @@ en:
       destroy: "Delete"
       new: "New"
       edit: "Edit"
+      publish: 'Publish'
+      unpublish: 'Unpublish'
     titles:
       edit: "Edit %{model}"
       save: "Save %{model}"

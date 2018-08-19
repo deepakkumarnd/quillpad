@@ -1,16 +1,23 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :about]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :publish, :unpublish]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    if user_signed_in?
+      @posts = Post.all
+    else
+      @posts = Post.published
+    end
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
+    if !user_signed_in? && !@post.published?
+      redirect_to posts_path
+    end
   end
 
   # GET /posts/new
@@ -51,6 +58,17 @@ class PostsController < ApplicationController
       end
     end
   end
+
+  def publish
+    @post.update_attribute(:is_published, true)
+    render :show
+  end
+
+  def unpublish
+    @post.update_attribute(:is_published, false)
+    render :show
+  end
+
 
   # DELETE /posts/1
   # DELETE /posts/1.json
