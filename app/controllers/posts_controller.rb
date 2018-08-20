@@ -5,11 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    if user_signed_in?
-      @posts = Post.order('id DESC').all
-    else
-      @posts = Post.published
-    end
+    @posts = SearchEngineService.new(current_user, params[:query]).perform
   end
 
   # GET /posts/1
