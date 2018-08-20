@@ -6,5 +6,5 @@ class Post < ApplicationRecord
     is_published
   end
 
-  scope :published, -> { where(is_published: true) }
+  scope :published, -> { where(is_published: true).order('id DESC') }
 end

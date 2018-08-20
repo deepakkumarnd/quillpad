@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if user_signed_in?
-      @posts = Post.all
+      @posts = Post.order('id DESC').all
     else
       @posts = Post.published
     end
@@ -68,7 +68,6 @@ class PostsController < ApplicationController
     @post.update_attribute(:is_published, false)
     render :show
   end
-
 
   # DELETE /posts/1
   # DELETE /posts/1.json

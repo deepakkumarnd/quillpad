@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     collection do
-      get :about
+      post :search
     end
 
     member do
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
       get :unpublish
     end
   end
+
+  get 'about', to: 'posts#about'
 
   root to: 'posts#index'
 end
