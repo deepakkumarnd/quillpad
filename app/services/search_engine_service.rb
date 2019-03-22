@@ -1,12 +1,13 @@
 class SearchEngineService
 
-  def initialize(user, query)
+  def initialize(user, query, page = 1)
     @user = user
     @query = query.to_s.strip
+    @page = page
   end
 
   def perform
-    cursor = Post.order('id DESC')
+    cursor = Post.order('id DESC').page(@page)
 
     if @user.blank?
       cursor = cursor.published

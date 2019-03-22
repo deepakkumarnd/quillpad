@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = SearchEngineService.new(current_user, params[:query]).perform
+    @posts = SearchEngineService.new(current_user, params[:query], params[:page]).perform
   end
 
   # GET /posts/1
