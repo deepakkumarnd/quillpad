@@ -18,4 +18,14 @@ class Post < ApplicationRecord
         negation: true
       }
     }
+
+  KINDS = ['default', 'bookmark', 'secure']
+  validates :kind, presence: true
+  validates :kind, inclusion: { in: KINDS }
+
+  before_save :encrypt_secure_posts
+
+
+  def encrypt_secure_posts(enc_key)
+  end
 end

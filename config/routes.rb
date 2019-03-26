@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :profiles, only: [:edit, :update]
+
   get 'about', to: 'posts#about'
 
   root to: 'posts#index'
