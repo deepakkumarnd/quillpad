@@ -243,7 +243,7 @@ DEPENDENCIES
   capistrano-rvm
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
-  devise (~> 4.4.0)
+  devise
   friendly_id (~> 5.1.0)
   jbuilder (~> 2.5)
   kaminari
