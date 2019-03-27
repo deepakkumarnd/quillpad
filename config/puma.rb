@@ -17,7 +17,7 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 if ENV.fetch("RAILS_ENV") == 'production'
   bind "unix:///#{ENV['HOME']}/quillpad/shared/tmp/sockets/puma.sock"
-  pidfile '#{ENV['HOME']}/quillpad/shared/tmp/pids/puma.pid'
+  pidfile "#{ENV['HOME']}/quillpad/shared/tmp/pids/puma.pid"
 else
   port        ENV.fetch("PORT") { 3000 }
 end
