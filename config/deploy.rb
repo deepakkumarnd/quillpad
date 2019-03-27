@@ -65,8 +65,13 @@ task :stop_puma do
   end
 end
 
+desc 'Health check'
+task :health_check do
+  system("curl -ks https://#{ENV['MY_SRV']}/status | jq")
+end
+
 desc 'Restart puma'
-task :restart_puma => [:stop_puma, :start_puma] do
+task :restart_puma => [:stop_puma, :start_puma, :health_check] do
   puts "Puma restarted"
 end
 
