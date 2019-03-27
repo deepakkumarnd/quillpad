@@ -71,7 +71,7 @@ task :health_check do
 end
 
 desc 'Restart puma'
-task :restart_puma => [:stop_puma, :start_puma, :health_check] do
+task :restart_puma => [:stop_puma, :start_puma] do
   puts "Puma restarted"
 end
 
