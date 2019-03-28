@@ -3,11 +3,6 @@ class Post < ApplicationRecord
   include PgSearch
 
   friendly_id :title, use: :slugged
-
-  def published?
-    is_published
-  end
-
   scope :published, -> { where(is_published: true).order('id DESC') }
 
   pg_search_scope :search_for,
@@ -20,6 +15,13 @@ class Post < ApplicationRecord
     }
 
   KINDS = ['default', 'bookmark', 'secure']
+
   validates :kind, presence: true
   validates :kind, inclusion: { in: KINDS }
+
+  belongs_to :user, counter_cache: true
+
+  def published?
+    is_published
+  end
 end

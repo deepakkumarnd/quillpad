@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resource :profiles, only: [:edit, :update]
 
-  get 'about', to: 'posts#about'
+  get 'about', to: 'pages#about'
   get 'status', controller: 'application', action: 'status'
 
   root to: 'posts#index'
