@@ -28,8 +28,8 @@
 
   <div class="form-group">
     <%= f.label :kind %>
-    <%= f.select :title, options_for_select(Post::KINDS), :class => 'form-control' %>
-    <%=f.error_span(:title) %>
+    <%= f.select :kind, options_for_select(Post::KINDS), :class => 'form-control' %>
+    <%=f.error_span(:kind) %>
   </div>
 
 
