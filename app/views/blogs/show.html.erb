@@ -1,0 +1,12 @@
+<div class="pull-right">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              blogs_path, :class => 'btn btn-default'  %>
+</div>
+
+<div class="page-header">
+  <%= @post.title %>
+</div>
+
+<div>
+  <%= render_markdown @post.content %>
+</div>

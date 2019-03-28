@@ -1,4 +1,9 @@
 class PagesController < ApplicationController
-  def about
+  layout 'landing'
+
+  def index
+  end
+
+  def show
   end
 end

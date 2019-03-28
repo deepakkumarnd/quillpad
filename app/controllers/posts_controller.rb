@@ -1,21 +1,17 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
   before_action :set_post, except: [:index, :show]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = SearchEngineService.new(current_user, params[:query], params[:page]).perform
+    @posts = SearchEngineService.new(current_user, params[:query], params[:page]).perform(true)
   end
 
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.friendly.find(params[:id])
-
-    if !user_signed_in? && !@post.published?
-      redirect_to posts_path
-    end
+    @post = current_user.posts.friendly.find(params[:id])
   end
 
   # GET /posts/new

@@ -12,10 +12,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :profiles, only: [:edit, :update]
+  resource :profiles, only: [:show, :edit, :update]
+  resources :blogs, only: [:index, :show]
 
-  get 'about', to: 'pages#about'
+  get 'about', to: 'pages#show'
   get 'status', controller: 'application', action: 'status'
 
-  root to: 'posts#index'
+  # subdomain based access
+  match '/' => 'blogs#index', :constraints => { :subdomain => /.+/ }, via: [:get]
+
+  root to: 'pages#index'
 end

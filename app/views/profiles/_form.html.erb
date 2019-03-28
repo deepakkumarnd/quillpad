@@ -1,0 +1,46 @@
+<%= form_for @user, url: profiles_path, method: :put, :html => { :class => "form-horizontal post" } do |f| %>
+
+  <% if @user.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@user.errors.count, "error") %> prohibited this post from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => 'form-control' %>
+    <%=f.error_span(:name) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :subdomain %>
+    <%= f.text_field :subdomain, :class => 'form-control' %>
+    <%=f.error_span(:subdomain) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :about %>
+    <%= f.text_area :about, :class => 'form-control', id: 'editor', rows: 30 %>
+    <%=f.error_span(:about) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit 'Save', :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+              posts_path, :class => 'btn btn-default' %>
+  </div>
+
+<% end %>
+
+<script>
+  var simplemde = new SimpleMDE({ element: document.getElementById('editor') });
+</script>
