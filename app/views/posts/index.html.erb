@@ -1,9 +1,6 @@
 <% if user_signed_in? %>
-  <div class="pull-right">
-    <%= link_to t('.new', :default => t("helpers.links.new")), new_post_path, :class => 'btn btn-primary' %>
-  </div>
+<div>Posts: <%= current_user.posts.size %></div>
 <% end %>
-
 <div class="list-group">
   <% @posts.each do |post| %>
     <div class="list-group-item list-group-item-action flex-column align-items-start">
