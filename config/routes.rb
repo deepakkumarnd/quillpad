@@ -1,3 +1,5 @@
+require 'subdomain'
+
 Rails.application.routes.draw do
   devise_for :users, path: '', path_names: { sign_in: 'login' }
 
@@ -19,7 +21,9 @@ Rails.application.routes.draw do
   get 'status', controller: 'application', action: 'status'
 
   # subdomain based access
-  match '/' => 'blogs#index', :constraints => { :subdomain => /.+/ }, via: [:get]
+  constraints(Subdomain) do
+    match '/' => 'blogs#index', via: [:get]
+  end
 
   root to: 'pages#index'
 end
