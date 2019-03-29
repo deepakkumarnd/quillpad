@@ -2,7 +2,7 @@ class SearchEngineService
 
   class InvalidSearchError; end
 
-  def initialize(user, query, user_signed_in, page = 1)
+  def initialize(user, query, page = 1)
     @user = user
     @query = query.to_s.strip
     @page = page
