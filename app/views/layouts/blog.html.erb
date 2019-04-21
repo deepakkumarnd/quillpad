@@ -32,6 +32,7 @@
         <div class="collapse navbar-collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <% if user_signed_in? %>
+              <li class="nav-item"><%= link_to "All posts", posts_path %> </li>
               <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li class="nav-item"><a href="/login">Login</a></li>
