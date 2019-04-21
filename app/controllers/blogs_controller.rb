@@ -15,5 +15,6 @@ class BlogsController < ApplicationController
 
   def set_user
     @user  = User.find_by_subdomain(request.subdomain)
+    raise "Not Found" if @user.blank?
   end
 end
