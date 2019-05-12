@@ -1,24 +1,26 @@
 class SearchEngineService
+  # Search engine searches posts in any user scope. The search is not on all the posts.
 
-  class InvalidSearchError; end
-
-  def initialize(user, query, page = 1)
-    @user = user
-    @query = query.to_s.strip
-    @page = page
+  def self.search(user, query, signed_in = false, page = 1)
+    new(user, query, signed_in, page).perform()
   end
 
-  def perform(user_signed_in = false)
-    cursor = @user.posts.order('id DESC').page(@page)
+  def initialize(user, query, signed_in, page)
+    raise InvalidSearchError if user.blank?
 
-    raise InvalidSearchError if @user.blank?
+    @user  = user
+    @query = query.to_s.strip
+    @page  = page
+    @user_signed_in = signed_in
+  end
 
-    cursor = cursor.published if !user_signed_in
+  def perform
+    cursor = @user
+      .posts
+      .order('id DESC')
+      .page(@page)
 
-    if @query.present?
-      cursor = cursor.search_for(@query)
-    end
-
-    cursor
+    cursor = @query.blank? ? cursor : cursor.search_for(@query)
+    @user_signed_in ? cursor : cursor.published
   end
 end

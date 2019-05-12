@@ -4,7 +4,7 @@ class BlogsController < ApplicationController
   layout 'blog'
 
   def index
-    @posts = SearchEngineService.new(@user, params[:query], params[:page]).perform
+    @posts = SearchEngine.search(@user, params[:query], user_signed_in?, params[:page])
   end
 
   def show

@@ -51,7 +51,8 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'rspec-rails'
-  gem 'factory_bot_rails'
+  gem 'factory_bot_rails', '4.8.2'
+  gem 'database_cleaner'
 end
 
 group :development do
