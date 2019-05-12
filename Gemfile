@@ -50,6 +50,8 @@ group :development, :test do
   gem 'capistrano-rvm'
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :development do
