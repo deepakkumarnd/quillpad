@@ -26,7 +26,6 @@ class ApplicationController < ActionController::Base
   end
 
   def get_status_code(response)
-    return 600 if response[:db] < 0
-    200
+    (response[:db] < 0) ? 600 : 200
   end
 end

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, except: [:index, :new]
+  before_action :set_post, except: [:index, :new, :create]
 
   # GET /posts
   # GET /posts.json
@@ -70,30 +70,6 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
-    end
-  end
-
-  def publish
-    respond_to do |format|
-      if @post.update(is_published: true)
-        format.html { redirect_to @post, notice: 'Post published.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :show }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def unpublish
-    respond_to do |format|
-      if @post.update(is_published: false)
-        format.html { redirect_to @post, notice: 'Post published.' }
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.html { render :show }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
     end
   end
 
