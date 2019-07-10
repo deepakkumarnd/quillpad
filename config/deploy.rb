@@ -75,4 +75,10 @@ task :restart_puma => [:stop_puma, :start_puma] do
   puts "Puma restarted"
 end
 
+desc 'run tests'
+task :run_tests do
+  system("bundle exec rspec spec")
+end
+
+before :deploy, :run_tests
 after :deploy, :restart_puma
