@@ -24,4 +24,10 @@ class Post < ApplicationRecord
   def published?
     is_published
   end
+
+  KINDS.each do |kind|
+    define_method "#{kind}?" do
+      self.kind == kind
+    end
+  end
 end
