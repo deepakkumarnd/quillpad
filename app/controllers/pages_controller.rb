@@ -6,5 +6,10 @@ class PagesController < ApplicationController
   end
 
   def show
+    @about = if user_signed_in?
+      current_user.about
+    else
+      I18n.t(:about)
+    end
   end
 end

@@ -40,3 +40,4 @@ en:
     attributes:
       post:
         friendly_id: Title
+  about: 'A simple and blogging platform'
