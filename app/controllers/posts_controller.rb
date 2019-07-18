@@ -59,11 +59,13 @@ class PostsController < ApplicationController
   end
 
   def publish
+    authorize @post
     @post.update_attribute(:is_published, true)
     render :show
   end
 
   def unpublish
+    authorize @post
     @post.update_attribute(:is_published, false)
     render :show
   end

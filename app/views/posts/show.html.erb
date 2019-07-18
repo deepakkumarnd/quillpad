@@ -4,13 +4,17 @@
   <% if user_signed_in? %>
     <%= link_to t('.edit', :default => t("helpers.links.edit")),
                 edit_post_path(@post), :class => 'btn btn-default' %>
-    <% if @post.published? %>
-      <%= link_to t('.unpublish', :default => t("helpers.links.unpublish")),
-          unpublish_post_path(@post), :class => 'btn btn-default' %>
-    <% else %>
+
+    <% if policy(@post).publish? %>
       <%= link_to t('.publish', :default => t("helpers.links.publish")),
           publish_post_path(@post), :class => 'btn btn-default' %>
     <% end %>
+
+    <% if policy(@post).unpublish? %>
+      <%= link_to t('.unpublish', :default => t("helpers.links.unpublish")),
+          unpublish_post_path(@post), :class => 'btn btn-default' %>
+    <% end %>
+
     <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                 post_path(@post),
                 :method => 'delete',

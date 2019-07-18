@@ -39,6 +39,7 @@ gem 'devise', '~> 4.6.2'
 gem 'pry'
 gem 'pg_search'
 gem 'kaminari'
+gem 'pundit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
