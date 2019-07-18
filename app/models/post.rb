@@ -30,4 +30,12 @@ class Post < ApplicationRecord
       self.kind == kind
     end
   end
+
+  def publish!
+    update_attribute(:is_published, true)
+  end
+
+  def unpublish!
+    update_attribute(:is_published, false)
+  end
 end
