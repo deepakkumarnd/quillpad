@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe SearchEngineService do
 
-  let(:user) { double('user') }
+  let(:user) { build(:user) }
   let(:query) { double('query') }
   let(:page) { 1 }
   let(:user_signed_in) { false }

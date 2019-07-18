@@ -12,7 +12,9 @@ class User < ApplicationRecord
   validates :subdomain, exclusion: { in: BLACKLISTED_SUBDOMAINS }
   validates :subdomain, length: { in: 3..20 }
   validates :subdomain, format: { with: /\A[a-z0-9]+\z/ }
+
   before_validation :set_random_username
+  before_create :set_enc_key_and_iv
 
   def set_random_username
     return if self.subdomain.present?
@@ -26,5 +28,10 @@ class User < ApplicationRecord
         break
       end
     end
+  end
+
+  def set_enc_key_and_iv
+    self.enc_key ||= Util::Secure.generate_key
+    self.enc_iv  ||= Util::Secure.generate_iv
   end
 end

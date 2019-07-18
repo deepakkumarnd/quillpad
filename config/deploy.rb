@@ -47,6 +47,15 @@ set :keep_releases, 5
 #   end
 # end
 
+desc 'Check status'
+task :health_check do
+  on roles(:all) do
+    within "/home/deploy" do
+      execute("curl",  "-ks", "https://localhost/status")
+    end
+  end
+end
+
 desc 'Start puma server'
 task :start_puma do
   on roles(:app) do

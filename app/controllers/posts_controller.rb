@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, except: [:index, :new, :create]
+  before_action :decrypt_secure_post, only: [:show, :edit]
 
   # GET /posts
   # GET /posts.json
@@ -26,7 +27,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = current_user.posts.new(post_params)
+    @post = current_user.posts.new(create_post_params)
+    encrypt_secure_post
 
     respond_to do |format|
       if @post.save
@@ -42,8 +44,11 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    @post.assign_attributes(update_post_params)
+    encrypt_secure_post
+
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -80,7 +85,23 @@ class PostsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def post_params
+    def create_post_params
+      params.require(:post).permit(:title, :content, :kind)
+    end
+
+    def update_post_params
       params.require(:post).permit(:title, :content)
+    end
+
+    def decrypt_secure_post
+      if @post.secure?
+        @post = SecurePost.new(current_user, @post).decrypt
+      end
+    end
+
+    def encrypt_secure_post
+      if @post.secure?
+        @post = SecurePost.new(current_user, @post).encrypt
+      end
     end
 end

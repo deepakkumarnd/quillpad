@@ -13,13 +13,14 @@
 # it.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+if ENV['COVERAGE'] && (ENV['COVERAGE'].downcase == "true")
+  require 'simplecov'
 
-require 'simplecov'
+  SimpleCov.minimum_coverage_by_file 80
 
-SimpleCov.minimum_coverage_by_file 80
-
-SimpleCov.start 'rails' do
-  add_group 'Services', 'app/services'
+  SimpleCov.start 'rails' do
+    add_group 'Services', 'app/services'
+  end
 end
 
 RSpec.configure do |config|
