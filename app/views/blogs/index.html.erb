@@ -1,15 +1,15 @@
-<div class="list-group">
+<ul class="qpad-post-list">
   <% @posts.each do |post| %>
-    <div class="list-group-item list-group-item-action flex-column align-items-start">
+    <li class="qpad-post-list-item">
       <a href="<%= blog_path(post) %>">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1"><%= post.title %></h5>
-        </div>
+        <div class="qpad-post-title"><%= post.title %></div>
+        <div class="qpad-post-date"><%= time_ago_in_words(post.created_at) %> ago</div>
       </a>
-      <small><%= time_ago_in_words(post.created_at) %></small>
-    </div>
+    </li>
   <% end %>
-</div>
+</ul>
 
-<%= paginate @posts %>
+<div class="qpad-pagination">
+  <%= paginate @posts %>
+</div>
 

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   resource :profiles, only: [:show, :edit, :update]
   resources :blogs, only: [:index, :show]
 
-  get 'about', to: 'pages#show'
+  get 'about', to: 'blogs#about'
   get 'status', controller: 'application', action: 'status'
 
   # subdomain based access
