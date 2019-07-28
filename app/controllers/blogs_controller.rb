@@ -11,6 +11,10 @@ class BlogsController < ApplicationController
     @post = @user.posts.friendly.find(params[:id])
   end
 
+  def about
+    @about = @user.about
+  end
+
   private
 
   def set_user

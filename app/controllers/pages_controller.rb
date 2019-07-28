@@ -2,9 +2,12 @@ class PagesController < ApplicationController
   layout 'landing'
 
   def index
-    redirect_to root_url(subdomain: current_user.subdomain) if user_signed_in? && current_user.subdomain.present?
+    if user_signed_in? && current_user.subdomain.present?
+      redirect_to root_url(subdomain: current_user.subdomain)
+    end
   end
 
+  # TODO: Remove this, about moved to blogs#about
   def show
     @about = if user_signed_in?
       current_user.about
