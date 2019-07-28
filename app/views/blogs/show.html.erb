@@ -1,12 +1,10 @@
-<div class="pull-right">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              blogs_path, :class => 'btn btn-default'  %>
-</div>
-
-<div class="page-header">
+<div class="qpad-post-header">
   <%= @post.title %>
+  <div class="pull-right">
+    <%= link_to "Back", blogs_path, class: "btn" %>
+  </div>
 </div>
 
-<div>
+<div class="qpad-post-body">
   <%= render_markdown @post.content %>
 </div>
