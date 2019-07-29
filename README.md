@@ -1,6 +1,6 @@
 # README
 
-Quillpad started as my personal hobby blogging project. I was using [jekyl](https://jekyllrb.com/) for my personal blog before and I was totally satisfied with that. But later I have developed an urge to make a markdown based blogging app myself. I quickly set it up using Rails framework but after doing that I wasn't able to spend enough time to it. But somehow I kept the fire buring and recently I am spending few hours on on a weekly basis.
+Quillpad started as my personal hobby blogging project. I was using [jekyl](https://jekyllrb.com/) for my personal blog before and I was totally satisfied with that. But later I have developed an urge to make a markdown based blogging app myself. I quickly set it up using Rails framework but after doing that I wasn't able to spend enough time to it. But somehow I kept the fire buring and recently I am spending few hours on a weekly basis.
 
 ## What all things I wanted to build ?
 
