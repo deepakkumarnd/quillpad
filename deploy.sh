@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
+# This script is used to deploy the application on the server.
 
 # Run tests
 COVERAGE=true bundle exec rspec spec
