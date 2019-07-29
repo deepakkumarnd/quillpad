@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Quillpad started as my personal hobby blogging project. I was using [jekyl](https://jekyllrb.com/) for my personal blog before and I was totally satisfied with that. But later I have developed an urge to make a markdown based blogging app myself. I quickly set it up using Rails framework but after doing that I wasn't able to spend enough time to it. But somehow I kept the fire buring and recently I am spending few hours on on a weekly basis.
 
-Things you may want to cover:
+## What all things I wanted to build ?
 
-* Ruby version
+1. A simple markdown based blogging app.
 
-* System dependencies
+2. Ability to add different kinds of post such as encrypted posts, bookmarks.
 
-* Configuration
+3. Ability to provide content backup on per user basis.
 
-* Database creation
+4. A good experience which is simple for anyone to adapt.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+5. A simple and looking blog.
