@@ -1,9 +1,18 @@
+$bg-color: #f2f2f2;
+$text-color: #178197;
+$code-color: #18b518;
+$font-family: Helvetica, Arial, sans-serif;
+$default-padding: 5px;
+$default-margin: 5px;
+$default-border-radius: 5px;
+$default-font-size: 16px;
+
 body {
     width: 100%;
-    background-color: #f2f2f2;
-    margin: 0px;
-    padding: 0px;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: $bg-color;
+    margin: 0;
+    padding: 0;
+    font-family: $font-family;
 }
 
 .qpad-body {
@@ -12,27 +21,27 @@ body {
     padding: 0;
 
     .container {
-        padding: 5px;
+        padding: $default-padding;
         background-color: #ffffff;
-        margin: 5px 0;
-        border-radius: 3px;
+        margin: $default-margin 0;
+        border-radius: $default-border-radius;
     }
 
     .qpad-navbar {
-        font-family: Helvetica, Arial, sans-serif;
+        font-family: $font-family;
         overflow: hidden;
 
         .nav {
-            padding: 7px;
+            padding: $default-padding;
 
             .brand {
                 max-width: 400px;
-                margin: 5px;
+                margin: $default-margin;
                 a {
-                    font-size: 16px;
+                    font-size: $default-font-size;
                     font-weight: bold;
                     text-decoration: none;
-                    color: #178197;
+                    color: $text-color;
                     cursor: pointer;
                     text-transform: capitalize;
                 }
@@ -49,9 +58,9 @@ body {
                     display: inline-block;
                     margin: 0 10px;
                     a {
-                        font-size: 16px;
+                        font-size: $default-font-size;
                         text-decoration: none;
-                        color: #178197;
+                        color: $text-color;
                         text-align: center;
                         text-transform: capitalize;
                         &:hover {
@@ -81,7 +90,7 @@ body {
                 color: #7f7f7f;
                 &:hover {
                     color: #202020;
-                    border-color: #178197;
+                    border-color: $text-color;
                 }
             }
 
@@ -95,11 +104,11 @@ body {
                 border-color: #f2f2f2;
                 text-decoration: none;
                 font-size: 14px;
-                color: #178197;
+                color: $text-color;
                 &:hover {
                     cursor: pointer;
                     opacity: 0.8;
-                    border-color: #178197;
+                    border-color: $text-color;
                 }
             }
         }
@@ -118,7 +127,7 @@ footer {
         font-size: 14px;
 
         a {
-            color: #178197;
+            color: $text-color;
             &:hover {
                 cursor: pointer;
                 opacity: 0.8;
@@ -134,11 +143,10 @@ footer {
     list-style: none;
 
     .qpad-post-list-item {
-        // padding: 0 0 14px 0;
         margin: 28px 0;
         a {
             text-decoration: none;
-            font-size: 36px;
+            font-size: 30px;
             .qpad-post-title {
                 color: #666;
                 padding: 0 0 7px 0;
@@ -168,7 +176,7 @@ footer {
             display: inline-block;
             margin: 0 14px 0 0;
             a {
-                color: #178197;
+                color: $text-color;
                 font-family: Arial;
                 &:hover {
                   position: cursor;
@@ -199,12 +207,12 @@ footer {
     border-color: #f2f2f2;
     text-decoration: none;
     font-size: 14px;
-    color: #178197;
+    color: $text-color;
     font-family: Arial, Helvetica, sans-serif;
     &:hover {
         cursor: pointer;
         opacity: 0.8;
-        border-color: #178197;
+        border-color: $text-color;
     }
 }
 
@@ -234,7 +242,7 @@ footer {
 
 code {
     background-color: #212121;;
-    color: #18b518;
+    color: $code-color;
     padding: 10px;
     display: block;
     margin: 14px 0;
