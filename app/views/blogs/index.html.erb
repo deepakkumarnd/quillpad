@@ -1,4 +1,8 @@
 <ul class="qpad-post-list">
+  <% if @posts.count  == 0 %>
+  <li class="qpad-post-list-item">Sorry!, no results found</li>
+  <% end %>
+
   <% @posts.each do |post| %>
     <li class="qpad-post-list-item">
       <a href="<%= blog_path(post) %>">

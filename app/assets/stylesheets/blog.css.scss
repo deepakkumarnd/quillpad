@@ -57,7 +57,7 @@ body {
 
                 li {
                     display: inline-block;
-                    margin: 0 10px;
+                    margin: 0 $default-margin;
                     a {
                         font-size: $default-font-size;
                         text-decoration: none;
@@ -145,6 +145,7 @@ footer {
 
     .qpad-post-list-item {
         margin: 28px 0;
+        color: #666;
         a {
             text-decoration: none;
             font-size: 30px;
@@ -234,7 +235,7 @@ footer {
         line-height: 1.5;
     }
 
-    h1, h2, h3, h4, h5, h6 { 
+    h1, h2, h3, h4, h5, h6 {
         color: #404040;
         font-weight: bold;
         margin: 30px 0;

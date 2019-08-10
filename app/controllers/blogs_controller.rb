@@ -4,7 +4,12 @@ class BlogsController < ApplicationController
   layout 'blog'
 
   def index
-    @posts = SearchEngine.search(@user, params[:query], user_signed_in?, params[:page])
+    @posts = SearchEngine.search(
+      @user,
+      params[:query],
+      user_signed_in?,
+      params[:page],
+      search_options)
   end
 
   def show
@@ -20,5 +25,15 @@ class BlogsController < ApplicationController
   def set_user
     @user  = User.find_by_subdomain(request.subdomain)
     raise "Not Found" if @user.blank?
+  end
+
+  def search_options
+    opts = []
+
+    if params[:kind].present?
+      opts.push(:kind)
+    end
+
+    params.select { |key| opts.include? key.to_sym }
   end
 end
