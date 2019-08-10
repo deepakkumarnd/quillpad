@@ -34,6 +34,6 @@ class BlogsController < ApplicationController
       opts.push(:kind)
     end
 
-    params.select { |key| opts.include? key.to_sym }
+    params.permit(opts)
   end
 end

@@ -16,7 +16,7 @@ class SearchEngineService
     @query = query.to_s.strip
     @page  = page
     @user_signed_in = signed_in
-    @options = options
+    @options = default_options.merge(options)
   end
 
   def perform
@@ -29,7 +29,7 @@ class SearchEngineService
       cursor = cursor.search_for(@query)
     end
 
-    if @options.has_key?(:kind) && Post::KINDS.include?(@options[:kind])
+    if Post::KINDS.include?(@options[:kind])
       cursor = cursor.where(kind: @options[:kind])
     end
 
@@ -38,5 +38,11 @@ class SearchEngineService
     end
 
     cursor
+  end
+
+  def default_options
+    {
+      kind: 'default'
+    }.with_indifferent_access
   end
 end
