@@ -1,5 +1,6 @@
 class SearchEngineService
-  # Search engine searches posts in any user scope. The search is not on all the posts.
+  # Search engine searches posts in a user scope.
+  # The search is not on all the public posts.
 
   def self.search(user, query, signed_in = false, page = 1, options = {})
     new(user,

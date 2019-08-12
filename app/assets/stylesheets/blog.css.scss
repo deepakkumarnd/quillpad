@@ -149,13 +149,22 @@ footer {
         a {
             text-decoration: none;
             font-size: 30px;
-            .qpad-post-title {
+
+            %qpad-post-heading {
                 color: #666;
                 padding: 0 0 7px 0;
                 font-family: 'Times New Roman', Times, serif;
                 &:hover {
                     color: #202020;
                 }
+            }
+
+            .qpad-post-title {
+                @extend %qpad-post-heading;
+            }
+
+            .qpad-post-bookmark {
+                @extend %qpad-post-heading;
             }
 
             .qpad-post-date {
