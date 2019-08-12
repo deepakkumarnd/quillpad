@@ -8,6 +8,7 @@
       <% if post.bookmark? %>
         <a target="_blank" href="<%= post.content %>">
           <div class="qpad-post-bookmark"><%= post.title %></div>
+          <div class="qpad-post-date"><%= time_ago_in_words(post.created_at) %> ago</div>
         </a>
       <% else %>
         <a href="<%= blog_path(post) %>">
