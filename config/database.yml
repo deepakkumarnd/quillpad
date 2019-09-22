@@ -82,4 +82,4 @@ production:
   <<: *default
   database: quillpad_production
   username: deploy
-  password: <%= ENV['QUILLPAD_DATABASE_PASSWORD'] %>
+  password: <%= Rails.application.credentials.pg[:password] %>
