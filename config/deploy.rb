@@ -21,7 +21,7 @@ set :deploy_to, "/home/deploy/quillpad"
 # set :pty, true
 
 # Default value for :linked_files is []
-# append :linked_files, "config/database.yml", "config/secrets.yml"
+append :linked_files, "config/master.key"
 
 # Default value for linked_dirs is []
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/system"
@@ -38,12 +38,11 @@ set :keep_releases, 5
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
 
-# Not used now
+# Uncomment when needed
 # desc "Updload config file"
 # task :upload_config do
 #   on roles(:all) do
-#     upload!("config/database.yml", "#{shared_path}/config/database.yml")
-#     upload!("config/secrets.yml", "#{shared_path}/config/secrets.yml")
+#     upload!("config/master.key", "#{shared_path}/config/master.key")
 #   end
 # end
 
