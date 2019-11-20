@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   extend FriendlyId
-  include PgSearch
+  include PgSearch::Model
 
   friendly_id :title, use: :slugged
   scope :published, -> { where(is_published: true).order('id DESC') }

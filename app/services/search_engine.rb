@@ -3,11 +3,13 @@ class SearchEngine
   # The search is not on all the public posts.
 
   def self.search(user, query, signed_in = false, page = 1, options = {})
-    new(user,
+    new(
+      user,
       query,
       signed_in,
       page,
-      options).perform()
+      options
+    ).perform
   end
 
   def initialize(user, query, signed_in, page, options = {})
