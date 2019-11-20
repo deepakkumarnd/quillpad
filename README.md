@@ -25,3 +25,27 @@ docker build -t quillpad:v1.0 . --force-rm
 ## Updates
 
 1. Migrated the application to rails 6.0.0
+
+
+
+## Running the application
+
+$ cd {root directory}
+$ docker network create back-tier
+$ mkdir -p mount/app mount/db
+$ docker-compose build
+$ docker-compose up
+
+### First time running ?
+
+Create database and run migratins
+
+$ docker-compose run app bundle exec rake db:create
+$ docker-compose run app bundle exec rake db:migrate
+
+### Access the rails console
+
+$ docker-compose run app bundle exec rails c
+
+
+Goto http://localhost:3000 to view the application running
