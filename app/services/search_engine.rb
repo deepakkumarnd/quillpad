@@ -1,4 +1,4 @@
-class SearchEngineService
+class SearchEngine
   # Search engine searches posts in a user scope.
   # The search is not on all the public posts.
 

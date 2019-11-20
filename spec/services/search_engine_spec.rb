@@ -1,18 +1,14 @@
 require 'rails_helper'
 
-RSpec.describe SearchEngineService do
+RSpec.describe SearchEngine do
 
   let(:user) { build(:user) }
   let(:query) { double('query') }
   let(:page) { 1 }
   let(:user_signed_in) { false }
 
-  it 'defines SearchEngine as alias to SearchEngineService' do
-    expect(SearchEngine).to eq(SearchEngineService)
-  end
-
   it 'has a search method' do
-     expect(SearchEngine).to respond_to(:search)
+    expect(SearchEngine).to respond_to(:search)
   end
 
   context '#new' do
@@ -21,7 +17,7 @@ RSpec.describe SearchEngineService do
     end
   end
 
-  context 'object' do
+  context 'SearchEngine' do
     subject { SearchEngine.new(user, query, user_signed_in, page) }
 
     it 'has a perform method' do
@@ -40,21 +36,21 @@ RSpec.describe SearchEngineService do
     end
 
     it 'returns zero records if there is no match' do
-      expect(SearchEngine.search(user1, "random string").count).to eq(0)
+      expect(SearchEngine.search(user1, 'random string').count).to eq(0)
     end
 
     it 'returns all published documents for blank search string' do
-      expect(SearchEngine.search(user1, " ").count).to eq(1)
+      expect(SearchEngine.search(user1, ' ').count).to eq(1)
     end
 
     it 'returns the matching published documents for non sigend in user' do
-      actual  = SearchEngine.search(user1, "ipsum").map(&:id).sort
+      actual  = SearchEngine.search(user1, 'ipsum').map(&:id).sort
       expected = user1.posts.where(is_published: true).map(&:id).sort
       expect(actual).to eq(expected)
     end
 
     it 'returns the all matching documents for sigend in user' do
-      actual  = SearchEngine.search(user1, "ipsum", true).map(&:id).sort
+      actual  = SearchEngine.search(user1, 'ipsum', true).map(&:id).sort
       expected = user1.posts.map(&:id).sort
       expect(actual).to eq(expected)
     end
