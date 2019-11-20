@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:11
+    environment:
+      restart: always
+      POSTGRES_PASSWORD: q1w2e3r4
+    volumes:
+      - ./mount/db:/var/lib/postgresql/data
+    networks:
+      - back-tier
+
+  app:
+    build:
+      context: .
+      dockerfile: development.dockerfile
+    command:
+      - /bin/sh
+      - -c
+      - |
+        bundle exec rails s --port 3000 --binding 0.0.0.0
+    ports:
+      - "3000:3000"
+    environment:
+      PG_DB_HOST: db
+      RAILS_ENV: development
+    depends_on:
+      - db
+    links:
+      - db
+    networks:
+      - back-tier
+
+networks:
+  back-tier:
+    external:
+      name: back-tier
