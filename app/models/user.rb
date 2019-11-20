@@ -2,8 +2,10 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 
-  BLACKLISTED_SUBDOMAINS = %w(user users blog blogs post posts comment comments mail email www
-  application page pages profile profiles admin administrator root)
+  BLACKLISTED_SUBDOMAINS = %w[
+    user users blog blogs post posts comment comments mail email www application
+    page pages profile profiles admin administrator root
+  ].freeze
 
   devise :database_authenticatable, :rememberable, :validatable
 
@@ -17,7 +19,7 @@ class User < ApplicationRecord
   before_create :set_enc_key_and_iv
 
   def set_random_username
-    return if self.subdomain.present?
+    return if subdomain.present?
 
     10.times do
       str = SecureRandom.urlsafe_base64(8).downcase

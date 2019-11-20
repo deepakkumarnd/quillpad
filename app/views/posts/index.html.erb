@@ -1,6 +1,13 @@
 <% if user_signed_in? %>
-<div>Posts: <%= current_user.posts.size %></div>
+  <p>Posts: <%= @posts.size %></p>
 <% end %>
+
+<ol class="breadcrumb">
+  <li><%= link_to 'Articles', posts_path(kind: 'default') %></li>
+  <li><%= link_to 'Bookmarks', posts_path(kind: 'bookmark') %></li>
+  <li><%= link_to 'Secrets', posts_path(kind: 'secure') %></li>
+</ol>
+
 <div class="list-group">
   <% @posts.each do |post| %>
     <div class="list-group-item list-group-item-action flex-column align-items-start">

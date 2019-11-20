@@ -6,7 +6,13 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = SearchEngine.search(current_user, params[:query], user_signed_in?, params[:page])
+    @posts = SearchEngine.search(
+      current_user,
+      params[:query],
+      user_signed_in?,
+      params[:page],
+      extract_options!
+    )
   end
 
   # GET /posts/1
@@ -81,29 +87,37 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = current_user.posts.friendly.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def create_post_params
-      params.require(:post).permit(:title, :content, :kind)
-    end
+  def set_post
+    @post = current_user.posts.friendly.find(params[:id])
+  end
 
-    def update_post_params
-      params.require(:post).permit(:title, :content)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def create_post_params
+    params.require(:post).permit(:title, :content, :kind)
+  end
 
-    def decrypt_secure_post
-      if @post.secure?
-        @post = SecurePost.new(current_user, @post).decrypt
-      end
-    end
+  def update_post_params
+    params.require(:post).permit(:title, :content)
+  end
 
-    def encrypt_secure_post
-      if @post.secure?
-        @post = SecurePost.new(current_user, @post).encrypt
-      end
+  def decrypt_secure_post
+    if @post.secure?
+      @post = SecurePost.new(current_user, @post).decrypt
     end
+  end
+
+  def encrypt_secure_post
+    if @post.secure?
+      @post = SecurePost.new(current_user, @post).encrypt
+    end
+  end
+
+  def extract_options!
+    if params.has_key? :kind
+      params.permit(:kind)
+    else
+      {}
+    end
+  end
 end
