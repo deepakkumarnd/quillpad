@@ -31,9 +31,13 @@ docker build -t quillpad:v1.0 . --force-rm
 ## Running the application
 
 $ cd {root directory}
+
 $ docker network create back-tier
+
 $ mkdir -p mount/app mount/db
+
 $ docker-compose build
+
 $ docker-compose up
 
 ### First time running ?
@@ -41,6 +45,7 @@ $ docker-compose up
 Create database and run migratins
 
 $ docker-compose run app bundle exec rake db:create
+
 $ docker-compose run app bundle exec rake db:migrate
 
 ### Access the rails console
@@ -53,6 +58,7 @@ Goto http://localhost:3000 to view the application running
 ### Running tests
 
 $ docker-compose run app bundle exec rspec spec
+
 $ docker-compose -f docker-compose-test.yaml up  --abort-on-container-exit --exit-code-from app ; docker-compose -f docker-compose-test.yaml down
 
 ### build production image
