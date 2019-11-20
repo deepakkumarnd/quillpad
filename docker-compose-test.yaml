@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:11
+    environment:
+      restart: always
+      POSTGRES_PASSWORD: q1w2e3r4
+    networks:
+      - back-tier
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command:
+      - /bin/sh
+      - -c
+      - |
+        bundle exec rake db:prepare
+        bundle exec rspec spec
+    environment:
+      PG_DB_HOST: db
+      RAILS_ENV: test
+    depends_on:
+      - db
+    links:
+      - db
+    networks:
+      - back-tier
+
+networks:
+  back-tier:
+    external:
+      name: back-tier

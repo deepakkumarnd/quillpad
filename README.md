@@ -49,3 +49,12 @@ $ docker-compose run app bundle exec rails c
 
 
 Goto http://localhost:3000 to view the application running
+
+### Running tests
+
+$ docker-compose run app bundle exec rspec spec
+$ docker-compose -f docker-compose-test.yaml up  --abort-on-container-exit --exit-code-from app ; docker-compose -f docker-compose-test.yaml down
+
+### build production image
+
+$ docker build -f production.dockerfile .

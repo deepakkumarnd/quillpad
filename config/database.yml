@@ -58,6 +58,7 @@ development:
 test:
   <<: *default
   database: quillpad_test
+  host: <%= ENV.fetch("PG_DB_HOST") { "localhost" } %>
   username: postgres
   password: <%= ENV["PG_USER_PASSWORD"] %>
   port: 5432
