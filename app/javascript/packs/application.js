@@ -17,9 +17,18 @@
 
 import Rails from  "@rails/ujs";
 import Turbolinks from "turbolinks";
+import launchEditor from "packs/editor";
 
-(function(){
+console.log('Hello World from Webpacker')
+
+$(document).ready(function() {
   Rails.start();
   Turbolinks.start();
-  console.log('Hello World from Webpacker')
-})();
+
+  // Do these on every page load.
+  $(document).on('turbolinks:load', function() {
+    if($('#editor') !== null) {
+      launchEditor();
+    }
+  });
+});
