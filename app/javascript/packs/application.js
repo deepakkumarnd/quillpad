@@ -16,8 +16,10 @@
 // const imagePath = (name) => images(name, true)
 
 import Rails from  "@rails/ujs";
+import Turbolinks from "turbolinks";
 
 (function(){
   Rails.start();
+  Turbolinks.start();
   console.log('Hello World from Webpacker')
 })();
