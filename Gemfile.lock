@@ -89,13 +89,6 @@ GEM
     childprocess (2.0.0)
       rake (< 13.0)
     coderay (1.1.2)
-    coffee-rails (5.0.0)
-      coffee-script (>= 2.2.0)
-      railties (>= 5.2.0)
-    coffee-script (2.4.1)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.12.2)
     commonjs (0.2.7)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
@@ -251,16 +244,6 @@ GEM
     ruby-progressbar (1.10.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.4)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
-    sassc (2.2.0)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     selenium-webdriver (3.142.4)
       childprocess (>= 0.5, < 3.0)
       rubyzip (~> 1.2, >= 1.2.2)
@@ -298,9 +281,6 @@ GEM
     thor (0.20.3)
     thread_safe (0.3.6)
     tilt (2.0.9)
-    turbolinks (5.2.0)
-      turbolinks-source (~> 5.2)
-    turbolinks-source (5.2.0)
     twitter-bootstrap-rails (3.2.2)
       actionpack (>= 3.1)
       execjs (>= 2.2.2, >= 2.2)
@@ -308,8 +288,6 @@ GEM
       railties (>= 3.1)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    uglifier (4.1.20)
-      execjs (>= 0.3.0, < 3)
     unicode-display_width (1.6.0)
     warden (1.2.8)
       rack (>= 2.0.6)
@@ -340,7 +318,6 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rvm
   capybara (~> 2.13)
-  coffee-rails
   database_cleaner
   devise
   factory_bot_rails (= 4.8.2)
@@ -356,16 +333,13 @@ DEPENDENCIES
   rails (~> 6.0.0)
   redcarpet
   rspec-rails
-  sass-rails
   selenium-webdriver
   simplecov
   solargraph
   spring
   spring-watcher-listen (~> 2.0.0)
-  turbolinks (~> 5)
   twitter-bootstrap-rails
   tzinfo-data
-  uglifier (>= 1.3.0)
   web-console
   webpacker (~> 4.0)
 
