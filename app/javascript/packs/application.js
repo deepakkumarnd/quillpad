@@ -19,7 +19,6 @@ import Rails from  "@rails/ujs";
 import Turbolinks from "turbolinks";
 import launchEditor from "packs/editor";
 import 'css/main'
-import 'css/scaffolds'
 
 console.log('Hello World from Webpacker')
 
