@@ -20,8 +20,6 @@ import Turbolinks from "turbolinks";
 import launchEditor from "packs/editor";
 import 'css/main'
 
-console.log('Hello World from Webpacker')
-
 $(document).ready(function() {
   Rails.start();
   Turbolinks.start();
