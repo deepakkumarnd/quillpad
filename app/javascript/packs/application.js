@@ -18,8 +18,7 @@
 import Rails from  "@rails/ujs";
 import Turbolinks from "turbolinks";
 import launchEditor from "packs/editor";
-
-console.log('Hello World from Webpacker')
+import 'css/main'
 
 $(document).ready(function() {
   Rails.start();

@@ -1,12 +1,14 @@
-<% if user_signed_in? %>
-  <p>Posts: <%= @posts.size %></p>
-<% end %>
-
-<ol class="breadcrumb">
-  <li><%= link_to 'Articles', posts_path(kind: 'default') %></li>
-  <li><%= link_to 'Bookmarks', posts_path(kind: 'bookmark') %></li>
-  <li><%= link_to 'Secrets', posts_path(kind: 'secure') %></li>
+<ol class="breadcrumb bg-white my-2 px-0">
+  <li class="breadcrumb-item" ><%= link_to 'Articles', posts_path(kind: 'default') %></li>
+  <li class="breadcrumb-item" ><%= link_to 'Bookmarks', posts_path(kind: 'bookmark') %></li>
+  <li class="breadcrumb-item" ><%= link_to 'Secrets', posts_path(kind: 'secure') %></li>
 </ol>
+
+<% if user_signed_in? %>
+  <div class="my-2">
+    <small>Posts: <%= @posts.size %></small>
+  </div>
+<% end %>
 
 <div class="list-group">
   <% @posts.each do |post| %>
@@ -16,7 +18,7 @@
           <h5 class="mb-1"><%= post.title %></h5>
         </div>
       </a>
-      <small><%= time_ago_in_words(post.created_at) %></small>
+      <small><%= time_ago_in_words(post.created_at) %> ago</small>
       <span class="badge badge-primary badge-pill"><%= post.kind %></span>
     </div>
   <% end %>
