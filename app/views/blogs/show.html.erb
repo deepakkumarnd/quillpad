@@ -1,10 +1,16 @@
 <div class="qpad-post-header">
-  <%= @post.title %>
+  <%= @post.title.present? ? @post.title : 'Untitled' %>
   <div class="pull-right">
     <%= link_to "Back", blogs_path, class: "btn" %>
   </div>
 </div>
 
-<div class="qpad-post-body">
-  <%= render_markdown @post.content %>
-</div>
+<% if @post.content.present? %>
+  <div class="qpad-post-body">
+    <%= render_markdown @post.content %>
+  </div>
+<% else %>
+  <div class="qpad-post-body">
+    <%= @post.body %>
+  </div>
+<% end %>
