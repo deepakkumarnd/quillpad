@@ -18,7 +18,11 @@
 import Rails from  "@rails/ujs";
 import Turbolinks from "turbolinks";
 import launchEditor from "packs/editor";
-import 'css/main'
+import "trix";
+import "@rails/actiontext";
+import "bootstrap";
+import "css/main";
+
 
 $(document).ready(function() {
   Rails.start();

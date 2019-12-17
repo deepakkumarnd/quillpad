@@ -10,15 +10,26 @@
         <li class="nav-item">
           <%= link_to "Blog", root_url(subdomain: current_user.subdomain), target: "_blank", class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "+New", new_post_path, class: "nav-link" %>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            + New
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "Article", new_post_path(kind: 'default'), class: "dropdown-item" %>
+            <%= link_to "Bookmark", new_post_path(kind: 'bookmark'), class: "dropdown-item" %>
+            <%= link_to "Secret", new_post_path(kind: 'secure'), class: "dropdown-item" %>
+          </div>
         </li>
+
         <li class="nav-item">
           <%= link_to "Posts", posts_path, class: "nav-link" %>
         </li>
+
         <li class="nav-item">
           <%= link_to "Profile", edit_profiles_path, class: "nav-link" %>
         </li>
+
         <li class="nav-item">
           <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
@@ -29,7 +40,7 @@
     </ul>
     <form action="<%= posts_path %>" class="form-inline my-2 my-lg-0" method='get'>
       <input name="query" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
 </nav>

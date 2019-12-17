@@ -22,14 +22,17 @@
     </div>
   
     <div class="form-group">
-      <%= f.label :body %>
-      <%= f.rich_text_area :body %>
-      <%=f.error_span(:body) %>
+      <%= f.label :content %>
+      <%= f.text_area :content, :class => 'form-control', id: 'editor', rows: 30 %>
+      <%=f.error_span(:content) %>
     </div>
 
-    <div class="form-group">
-      <%= @post.kind %>
-    </div>
+    <% if @post.new_record? %>
+      <div class="form-group">
+        <%= f.hidden_field :kind %>
+        <%= @post.kind %>
+      </div>
+    <% end %>
 
     <div class="form-group">
       <%= f.submit "Save", :class => 'btn btn-primary' %>
