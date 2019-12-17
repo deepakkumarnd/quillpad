@@ -6,8 +6,9 @@
     remote:        data-remote
     paginator:     the paginator that renders the pagination tags inside
 -%>
+<nav>
 <%= paginator.render do -%>
-  <ul class="pagination">
+  <ul class="pagination justify-content-center">
     <%= first_page_tag unless current_page.first? %>
     <%= prev_page_tag unless current_page.first? %>
     <% each_page do |page| -%>
@@ -21,3 +22,4 @@
     <%= last_page_tag unless current_page.last? %>
   </ul>
 <% end -%>
+</nav>
