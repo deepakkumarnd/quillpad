@@ -31,6 +31,8 @@ class Post < ApplicationRecord
     end
   end
 
+  has_rich_text :body
+
   def published?
     is_published
   end

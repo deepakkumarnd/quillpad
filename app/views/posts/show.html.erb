@@ -41,6 +41,10 @@
 
 <div class="row">
   <div class="col">
-    <%= render_markdown @post.content %>
+    <% if @post.content.present? %>
+      <%= render_markdown @post.content %>
+    <% else %>
+      <%= @post.body %>
+    <% end %>
   </div>
 </div>
