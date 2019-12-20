@@ -109,6 +109,7 @@ GEM
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     ffi (1.11.1)
+    foreman (0.86.0)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     globalid (0.4.2)
@@ -327,6 +328,7 @@ DEPENDENCIES
   database_cleaner
   devise
   factory_bot_rails (= 4.8.2)
+  foreman
   friendly_id (~> 5.1.0)
   image_processing (~> 1.2)
   jbuilder (~> 2.5)

@@ -25,12 +25,18 @@ docker build -t quillpad:v1.0 . --force-rm
 ## Updates
 
 1. Migrated the application to rails 6.0.0
-
+2. Use trix editor
 
 
 ## Running the application
 
 $ cd {root directory}
+
+$ bundle
+
+$ bundle exec foreman start
+
+or using docker
 
 $ docker network create back-tier
 
