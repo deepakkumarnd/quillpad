@@ -15,13 +15,15 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-import Rails from  "@rails/ujs";
+import Rails from "@rails/ujs";
 import Turbolinks from "turbolinks";
 import launchEditor from "packs/editor";
 import "trix";
 import "@rails/actiontext";
 import "bootstrap";
+import "@fortawesome/fontawesome-free/js/all";
 import "css/main";
+import "channels/index";
 
 
 $(document).ready(function() {

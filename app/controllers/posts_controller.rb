@@ -19,6 +19,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1.json
   def show
+    load_comments if @post.default?
   end
 
   # GET /posts/new
@@ -119,5 +120,9 @@ class PostsController < ApplicationController
     else
       {}
     end
+  end
+
+  def load_comments
+    @comments = @post.comments.order('id desc')
   end
 end
