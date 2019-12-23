@@ -20,6 +20,7 @@ class Post < ApplicationRecord
   validates :kind, inclusion: { in: KINDS }
 
   belongs_to :user, counter_cache: true
+  has_many :comments, dependent: :destroy
 
   scope :articles, -> { where(kind: 'default') }
   scope :bookmarks, -> { where(kind: 'bookmark') }
