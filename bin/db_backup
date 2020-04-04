@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+# This file needs to be run as a privillaged user or a root user.
+
+require 'fileutils'
+
+base_path = '/tmp'
+timestamp = Time.now.strftime("%d_%m_%Y_%H-%M")
+filename  =  "quillpad-production-backup-#{timestamp}.sql"
+
+target    = File.join(base_path, filename)
+command   = "su -c 'pg_dump quillpad_production > #{target}' -s /bin/sh postgres"
+backup_dir = '/dbbackup'
+
+begin
+  system(command)
+rescue StandardError => e
+  puts "Backup failed due to exception: #{e.class}"
+end
+
+if $? == 0
+  FileUtils.cp target, File.join(backup_dir, filename)
+  puts "Backup file created - #{filename} in #{backup_dir}"
+else
+  puts 'Backup failed'
+end
