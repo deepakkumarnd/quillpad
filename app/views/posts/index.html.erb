@@ -13,11 +13,15 @@
 <div class="list-group">
   <% @posts.each do |post| %>
     <div class="list-group-item list-group-item-action flex-column align-items-start">
-      <a href="<%= post_path(post) %>">
-        <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1"><%= post.title.empty? ? "Untilted" : post.title %></h5>
-        </div>
-      </a>
+      <% if post.bookmark? %>
+        <%= render_bookmark(post) %>
+      <% else %>
+        <a href="<%= post_path(post) %>">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><%= post.title.empty? ? "Untilted" : post.title %></h5>
+          </div>
+        </a>
+      <% end %>
       <small><%= time_ago_in_words(post.created_at) %> ago</small>
       <span class="badge badge-primary badge-pill"><%= post.kind %></span>
     </div>
