@@ -18,6 +18,8 @@ class User < ApplicationRecord
   before_validation :set_random_username
   before_create :set_enc_key_and_iv
 
+  has_rich_text :about
+
   def set_random_username
     return if subdomain.present?
 

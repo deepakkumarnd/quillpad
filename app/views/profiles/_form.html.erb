@@ -30,7 +30,7 @@
 
   <div class="form-group">
     <%= f.label :about %>
-    <%= f.text_area :about, :class => 'form-control', id: 'editor', rows: 30 %>
+    <%= f.rich_text_area :about, placeholder: 'Type here ..' %>
     <%=f.error_span(:about) %>
   </div>
 
