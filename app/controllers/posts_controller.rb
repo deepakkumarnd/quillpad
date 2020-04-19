@@ -34,8 +34,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = current_user.posts.new(create_post_params)
-    encrypt_secure_post
+    @post = PostBuilder.build(current_user, create_post_params)
 
     respond_to do |format|
       if @post.save
@@ -51,8 +50,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    @post.assign_attributes(update_post_params)
-    encrypt_secure_post
+    @post = PostBuilder.build(current_user, update_post_params, @post)
 
     respond_to do |format|
       if @post.save
@@ -94,6 +92,7 @@ class PostsController < ApplicationController
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
+  # :content is required for secret posts
   def create_post_params
     params.require(:post).permit(:title, :kind, :body, :content)
   end
@@ -105,12 +104,6 @@ class PostsController < ApplicationController
   def decrypt_secure_post
     if @post.secure?
       @post = SecurePost.new(current_user, @post).decrypt
-    end
-  end
-
-  def encrypt_secure_post
-    if @post.secure?
-      @post = SecurePost.new(current_user, @post).encrypt
     end
   end
 
