@@ -68,13 +68,13 @@ class PostsController < ApplicationController
   def publish
     authorize @post
     @post.publish!
-    render :show
+    redirect_to @post
   end
 
   def unpublish
     authorize @post
     @post.unpublish!
-    render :show
+    redirect_to @post
   end
 
   # DELETE /posts/1
