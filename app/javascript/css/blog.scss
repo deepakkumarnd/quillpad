@@ -20,6 +20,13 @@ body {
     margin: 0 auto;
     padding: 0;
 
+    .trix-content {
+        font-size: 20px;
+        color: #404040;
+        font-family: Helvetica;
+        margin: 25px 0;
+        line-height: 1.8;    }
+
     .container {
         padding: $default-padding;
         background-color: #ffffff;
