@@ -2,3 +2,7 @@
 <div class="qpad-post-body">
     <%= @about %>
 </div>
+
+<% if @user.social_medias.count > 0 %>
+    <%= render "social_media_links" %>
+<% end %>

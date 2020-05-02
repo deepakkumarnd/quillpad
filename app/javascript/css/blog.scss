@@ -21,11 +21,15 @@ body {
     padding: 0;
 
     .trix-content {
-        font-size: 20px;
-        color: #404040;
-        font-family: Helvetica;
-        margin: 25px 0;
-        line-height: 1.8;    }
+        div {
+            font-size: 20px;
+            color: #404040;
+            font-family: Helvetica;
+            margin: 25px 0;
+            line-height: 1.8;
+            text-align: justify;
+        }
+    }
 
     .container {
         padding: $default-padding;
@@ -258,10 +262,28 @@ footer {
     }
 }
 
-code {
+code, pre {
     background-color: #212121;;
     color: $code-color;
     padding: 10px;
     display: block;
     margin: 14px 0;
+    line-height: 1.5em;
+    font-size: 18px;
+}
+
+ul.social-media-links {
+    li {
+        list-style: none;
+        line-height: 2em;
+        a {
+            font-size: 18px;
+            color: $text-color;
+            &:hover {
+                cursor: pointer;
+                opacity: 0.8;
+                border-color: $text-color;
+            }
+        }
+    }
 }

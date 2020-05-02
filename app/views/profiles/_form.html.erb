@@ -28,10 +28,31 @@
     <small>Only letters a-z, digits 0-9 or combination with length 3-20 letters are allowed as username.</small>
   </div>
 
-  <div class="form-group">
+  <div class="form-group qpad-text-edit">
     <%= f.label :about %>
     <%= f.rich_text_area :about, placeholder: 'Type here ..' %>
     <%=f.error_span(:about) %>
+  </div>
+
+  <div>
+    <%= f.fields_for :social_medias do |sm|%>
+      <div class="form-group">
+        <%= sm.label :name, "Social media website name (Twitter/Facebook/Github etc)" %>
+        <%= sm.text_field :name, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= sm.label :link, "Link to your social media profile" %>
+        <%= sm.text_field :link, :class => 'form-control' %>
+      </div>
+
+      <% if sm.object.persisted? %>
+        <div class="form-group">
+          <%= sm.check_box :_destroy %>
+          <%= sm.label :_destroy, "Remove link" %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="form-group">

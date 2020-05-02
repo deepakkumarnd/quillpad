@@ -4,6 +4,20 @@
 @import "trix/dist/trix.css";
 @import "actiontext.scss";
 
+$border-light: #ced4da;
+
 .post-title {
   border: none;
+}
+
+.qpad-text-edit {
+  trix-editor {
+    border: solid 1px $border-light;
+  }
+}
+
+.trix-content {
+  div {
+    text-align: justify;
+  }
 }

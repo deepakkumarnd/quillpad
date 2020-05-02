@@ -10,6 +10,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :rememberable, :validatable
 
   has_many :posts
+  has_many :social_medias, dependent: :destroy
+  accepts_nested_attributes_for :social_medias,
+                                allow_destroy: true,
+                                reject_if: lambda { |attr| blank_social_media_attributes?(attr) }
+
   validates :subdomain, uniqueness: true
   validates :subdomain, exclusion: { in: BLACKLISTED_SUBDOMAINS }
   validates :subdomain, length: { in: 3..20 }
@@ -37,5 +42,11 @@ class User < ApplicationRecord
   def set_enc_key_and_iv
     self.enc_key ||= Util::Secure.generate_key
     self.enc_iv  ||= Util::Secure.generate_iv
+  end
+
+  private
+
+  def self.blank_social_media_attributes?(attr)
+    attr[:name].blank? || attr[:link].blank?
   end
 end

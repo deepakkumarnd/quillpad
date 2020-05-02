@@ -1,0 +1,8 @@
+<div class="qpad-post-header">Lets connect</div>
+<ul class="social-media-links">
+  <% @user.social_medias.each do |rec| %>
+    <li>
+      <%= link_to rec.name, rec.link, target: "_blank" %>
+    </li>
+  <% end %>
+</ul>
