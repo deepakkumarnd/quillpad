@@ -1,11 +1,13 @@
 $bg-color: #f2f2f2;
-$text-color: #178197;
+$link-color: #178197;
 $code-color: #18b518;
+$text-color: #404040;
 $font-family: Helvetica, Arial, sans-serif;
 $default-padding: 5px;
 $default-margin: 5px;
 $default-border-radius: 5px;
 $default-font-size: 16px;
+$line-height: 1.5em;
 
 body {
     width: 100%;
@@ -13,6 +15,20 @@ body {
     margin: 0;
     padding: 0;
     font-family: $font-family;
+}
+
+code, pre {
+    background-color: #212121;;
+    color: $code-color;
+    padding: 10px 10px 0 10px;
+    display: block;
+    margin: 0;
+    line-height: $line-height;
+    font-size: 18px;
+    font-family: monospace;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
 }
 
 .qpad-body {
@@ -23,11 +39,25 @@ body {
     .trix-content {
         div {
             font-size: 20px;
-            color: #404040;
+            color: $text-color;
             font-family: Helvetica;
-            margin: 25px 0;
-            line-height: 1.8;
+            line-height: $line-height;
             text-align: justify;
+            margin: 0;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: $text-color;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        ul {
+            margin: 0;
+            li {
+                font-size: 20px;
+                line-height: 2em;
+            }
         }
     }
 
@@ -53,7 +83,7 @@ body {
                     font-size: $default-font-size;
                     font-weight: bold;
                     text-decoration: none;
-                    color: $text-color;
+                    color: $link-color;
                     cursor: pointer;
                     text-transform: capitalize;
                 }
@@ -72,7 +102,7 @@ body {
                     a {
                         font-size: $default-font-size;
                         text-decoration: none;
-                        color: $text-color;
+                        color: $link-color;
                         text-align: center;
                         text-transform: capitalize;
                         &:hover {
@@ -102,7 +132,7 @@ body {
                 color: #7f7f7f;
                 &:hover {
                     color: #202020;
-                    border-color: $text-color;
+                    border-color: $link-color;
                 }
             }
 
@@ -116,11 +146,11 @@ body {
                 border-color: #f2f2f2;
                 text-decoration: none;
                 font-size: 14px;
-                color: $text-color;
+                color: $link-color;
                 &:hover {
                     cursor: pointer;
                     opacity: 0.8;
-                    border-color: $text-color;
+                    border-color: $link-color;
                 }
             }
         }
@@ -139,7 +169,7 @@ footer {
         font-size: 14px;
 
         a {
-            color: $text-color;
+            color: $link-color;
             &:hover {
                 cursor: pointer;
                 opacity: 0.8;
@@ -198,7 +228,7 @@ footer {
             display: inline-block;
             margin: 0 14px 0 0;
             a {
-                color: $text-color;
+                color: $link-color;
                 font-family: Arial;
                 &:hover {
                   position: cursor;
@@ -229,12 +259,12 @@ footer {
     border-color: #f2f2f2;
     text-decoration: none;
     font-size: 14px;
-    color: $text-color;
+    color: $link-color;
     font-family: Arial, Helvetica, sans-serif;
     &:hover {
         cursor: pointer;
         opacity: 0.8;
-        border-color: $text-color;
+        border-color: $link-color;
     }
 }
 
@@ -249,27 +279,17 @@ footer {
     margin: 30px;
     p {
         font-size: 20px;
-        color: #404040;
+        color: $text-color;
         font-family: Helvetica;
         margin: 25px 0;
         line-height: 1.5;
     }
 
     h1, h2, h3, h4, h5, h6 {
-        color: #404040;
+        color: $text-color;
         font-weight: bold;
         margin: 30px 0;
     }
-}
-
-code, pre {
-    background-color: #212121;;
-    color: $code-color;
-    padding: 10px;
-    display: block;
-    margin: 14px 0;
-    line-height: 1.5em;
-    font-size: 18px;
 }
 
 ul.social-media-links {
@@ -278,11 +298,11 @@ ul.social-media-links {
         line-height: 2em;
         a {
             font-size: 18px;
-            color: $text-color;
+            color: $link-color;
             &:hover {
                 cursor: pointer;
                 opacity: 0.8;
-                border-color: $text-color;
+                border-color: $link-color;
             }
         }
     }
